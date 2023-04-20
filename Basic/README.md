@@ -225,7 +225,7 @@ happy coding!!
 ### `chmod` (change mode)
 - 파일이나 디렉터리의 권한을 변경 
 - r: read, w:write, x:execute
-- rwx rwx rwx (owner group other)
+- rwx rwx rwx (user group other)
 - rwx를 8진수로 표현하면 (r:4, w:2, x:1)
 - 소유자와 그룹, 그외 사용자에게 모두 권한을 부여하는 경우 777을 입력하면 됨
 - 예를 들어, 'test1.txt'에 대한 모든 사용자의 읽기, 쓰기, 실행 권한을 부여하려면 다음과 같이 입력
