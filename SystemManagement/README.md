@@ -152,3 +152,161 @@ newFedoraGroup1:x:2023:
 
 ## 파일 시스템 관리
 
+ - 파일 시스템은 컴퓨터의 데이터를 구조화하고 저장하는 방법
+ - 리눅스에서 파일 시스템은 파일과 디렉터리로 구성
+ - 여러 명령어를 사용하여 파일 시스템을 관리
+
+### `mkdir` (make directories)
+- 새 디렉터리 `생성`
+- 디렉터리는 파일과 다른 디렉터리를 포함하는 컨테이너
+
+```
+[root@localhost myfolder]# ls
+[root@localhost myfolder]# mkdir newfolder
+[root@localhost myfolder]# ls
+newfolder
+```
+
+### `cd` (change directories)
+- 디렉터리 간 `이동`
+```
+[root@localhost ~]# pwd
+/root
+
+[root@localhost ~]# cd myfolder/
+
+[root@localhost myfolder]# pwd
+/root/myfolder
+```
+
+### `rmdir` (remove empty directories)
+- 디렉터리 `삭제`
+- 디렉터리가 비어있지 않으면 삭제 할 수 없음
+- 디렉터리가 비어있지 않은 경우 `rm -r`을 사용하여 디렉터리를 삭제 할 수 있음
+
+```
+[root@localhost ~]# ls -l
+합계 52
+-rw-------. 1 root root  952  3월 10 23:40 anaconda-ks.cfg
+drwxr-xr-x. 7 root root 4096  3월 11 00:11 firefox
+drwxr-xr-x  3 root root 4096  4월 22 19:58 myfolder
+drwxr-xr-x  2 root root 4096  4월 22 20:04 test
+
+[root@localhost ~]# rmdir test
+
+[root@localhost ~]# ls -l
+합계 48
+-rw-------. 1 root root  952  3월 10 23:40 anaconda-ks.cfg
+drwxr-xr-x. 7 root root 4096  3월 11 00:11 firefox
+drwxr-xr-x  3 root root 4096  4월 22 19:58 myfolder
+```
+
+### `touch`
+- 새 파일 `생성`
+
+```
+[root@localhost myfolder]# ls -l
+합계 4
+drwxr-xr-x 2 root root 4096  4월 22 19:58 newfolder
+
+[root@localhost myfolder]# touch newtext.txt
+
+[root@localhost myfolder]# ls -l
+합계 4
+drwxr-xr-x 2 root root 4096  4월 22 19:58 newfolder
+-rw-r--r-- 1 root root    0  4월 22 20:11 newtext.txt
+```
+
+### `cp`
+- 파일 복사
+
+```
+[root@localhost myfolder]# ls
+newfolder  newtext.txt
+
+[root@localhost myfolder]# cp newtext.txt copy_text.txt
+
+[root@localhost myfolder]# ls
+copy_text.txt  newfolder  newtext.txt
+```
+
+### `mv`
+- 파일을 이동하거나 이름을 변경
+
+> 파일 이동을 하는 경우
+```
+[root@localhost myfolder]# ls
+copy_text.txt  newfolder  newtext.txt
+
+[root@localhost myfolder]# mv copy_text.txt newfolder
+
+[root@localhost myfolder]# ls
+newfolder  newtext.txt
+
+[root@localhost myfolder]# cd newfolder/
+[root@localhost newfolder]# ls
+copy_text.txt
+```
+
+> 파일 이름을 변경 하는 경우
+```
+[root@localhost newfolder]# ls
+copy_text.txt
+
+[root@localhost newfolder]# mv copy_text.txt rename_text.txt
+
+[root@localhost newfolder]# ls
+rename_text.txt
+```
+
+### `rm`
+- 파일 삭제
+
+```
+[root@localhost newfolder]# ls
+rename_text.txt
+
+[root@localhost newfolder]# rm rename_text.txt 
+rm: remove 일반 빈 파일 'rename_text.txt'? y
+
+[root@localhost newfolder]# ls
+[root@localhost newfolder]# 
+```
+
+### `cat`
+- 파일의 전체 내용을 출력
+
+```
+[root@localhost newfolder]# cat text.txt
+```
+
+### `less`
+- 파일의 내용을 페이징하여 출력
+- 큰 파일의 내용을 확인할 때 유용 
+- less를 사용하면 키보드 화살표를 사용하여 위아래로 스크롤할 수 있음 
+- 검색 기능 제공
+- less를 사용하는 동안 다음 명령어를 사용할 수 있음
+  - 위/아래 화살표: 한 줄씩 스크롤
+  - Page Up/Page Down: 한 페이지씩 스크롤
+  - / 문자열: 문자열 검색
+  - q: less 종료
+
+```
+[root@localhost newfolder]# less text.txt
+```
+
+### `more`
+- less와 비슷한 기능을 제공하지만, 더 단순한 버전
+- more를 사용하여 파일의 내용을 페이징하여 출력할 수 있음 
+- 화면이 빠르게 스크롤되지 않음
+- more에서는 위 화살표로 스크롤할 수 없고, 페이지 단위로만 이동할 수 있음 
+- more를 사용하는 동안 다음 명령어를 사용할 수 있음
+  - Enter: 한 줄씩 스크롤
+  - Space: 한 페이지씩 스크롤
+  - q: more 종료
+```
+[root@localhost newfolder]# more text.txt
+```
+
+## 프로세스 관리
+
