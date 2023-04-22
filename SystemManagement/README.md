@@ -149,3 +149,6 @@ newFedoraGroup1:x:1007:
 [root@localhost ~]# tail -1 /etc/group
 newFedoraGroup1:x:2023:
 ```
+
+## 파일 시스템 관리
+
