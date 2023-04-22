@@ -45,7 +45,8 @@
 
 ### `cd` (change directory)
  - 디렉터리 `이동` 명령어 
- - 예를 들어, 'Documents' 디렉터리로 이동하려면 다음과 같이 입력해야함
+
+> 예를 들어, 'Documents' 디렉터리로 이동하려면 다음과 같이 입력해야함
 
 ```
 [root@localhost ~]# cd Documents
@@ -113,7 +114,8 @@ drwxr-xr-x.  2 root root 4096  3월 10 23:47 음악
 
 ### `mkdir` (make directory)
 - 새로운 `디렉터리`를 `생성` 
-- 예를 들어, 'example'이라는 이름의 디렉터리를 생성하려면 다음과 같이 입력
+
+> 예를 들어, 'example'이라는 이름의 디렉터리를 생성하려면 다음과 같이 입력
 
 ```
 [root@localhost ~]# mkdir example
@@ -121,7 +123,8 @@ drwxr-xr-x.  2 root root 4096  3월 10 23:47 음악
 
 ### `touch` 
 - 새로운 `파일`을 `생성`
-- 예를 들어, 'test.txt'라는 이름의 파일을 생성하려면 다음과 같이 입력
+  
+> 예를 들어, 'test.txt'라는 이름의 파일을 생성하려면 다음과 같이 입력
 
 ```
 [root@localhost ~]# touch test.txt
@@ -130,7 +133,8 @@ drwxr-xr-x.  2 root root 4096  3월 10 23:47 음악
 ### `rm` (remove)
 - 파일이나 디렉터리를 `삭제`
 - 디렉터리를 삭제하려면 `-r` 옵션을 사용해야함 
-- 예를 들어, 'test.txt' 파일 또는 'testGroup' 디렉터리를 삭제하려면 다음과 같이 입력
+
+> 예를 들어, 'test.txt' 파일 또는 'testGroup' 디렉터리를 삭제하려면 다음과 같이 입력
 
 ```
 [root@localhost ~]# rm test.txt
@@ -140,12 +144,14 @@ drwxr-xr-x.  2 root root 4096  3월 10 23:47 음악
 ### `cp` (copy)
 - 파일이나 디렉터리를 `복사`
 - 디렉터리를 복사하려면 `-r` 옵션을 사용
-- 예를 들어, 'file1.txt'를 'file2.txt'로 복사하려면 다음과 같이 입력
+
+> 예를 들어, 'file1.txt'를 'file2.txt'로 복사하려면 다음과 같이 입력
 
 ```
 [root@localhost ~]# cp file1.txt file2.txt
 ```
-- 예를 들어, 'dir1'를 'dir2'로 복사하려면 다음과 같이 입력
+
+> 예를 들어, 'dir1'를 'dir2'로 복사하려면 다음과 같이 입력
 
 ```
 [root@localhost ~]# cp -r dir1 dir2
@@ -153,7 +159,8 @@ drwxr-xr-x.  2 root root 4096  3월 10 23:47 음악
 
 ### `mv` (move)
 - 파일이나 디렉터리를 `이동`하거나 `이름을 변경` 
-- 예를 들어, 'old.txt'를 'newDir'디렉터리로 이동하거나 이름을 변경하려면 다음과 같이 입력
+
+> 예를 들어, 'old.txt'를 'newDir'디렉터리로 이동하거나 이름을 변경하려면 다음과 같이 입력
 
 ```
 [root@localhost ~]# mv old.txt newDir   //newDir 디렉터리안으로 이동
@@ -162,7 +169,8 @@ drwxr-xr-x.  2 root root 4096  3월 10 23:47 음악
 
 ### `find`
 - 파일이나 디렉터리를 `검색` 
-- 예를 들어, 현재 디렉터리와 하위 디렉터리에서 'network'를 찾으려면 다음과 같이 입력
+
+> 예를 들어, 현재 디렉터리와 하위 디렉터리에서 'network'를 찾으려면 다음과 같이 입력
 
 ```
 [root@localhost /]# find . -name network
@@ -179,7 +187,8 @@ drwxr-xr-x.  2 root root 4096  3월 10 23:47 음악
 
 ### `grep` (global regular expression print)
 - 파일에서 `문자열`이나 `정규 표현식`과 일치하는 줄을 `검색` 
-- 예를 들어, 'fedora.repo'에서 'rpm'이라는 문자열을 찾으려면 다음과 같이 입력
+
+> 예를 들어, 'fedora.repo'에서 'rpm'이라는 문자열을 찾으려면 다음과 같이 입력
 
 ```
 [root@localhost yum.repos.d]# grep rpm fedora.repo 
@@ -194,7 +203,8 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
 
 ### `cat` (concatenate)
  - 파일의 내용을 출력하거나 파일을 연결하여 출력
- - 예를 들어, 'helloworld.txt'의 내용을 출력하려면 다음과 같이 입력
+
+> 예를 들어, 'helloworld.txt'의 내용을 출력하려면 다음과 같이 입력
 
 ```
 [root@localhost ~]# cat helloworld.txt
@@ -207,7 +217,8 @@ happy coding!!
 ### `nano`, `gedit`, `vi`, `vim`, `emacs` 등
 - 텍스트 에디터 
 - 이 에디터들을 사용하여 파일을 열고 편집할 수 있음 
-- 예를 들어, 'testfile.txt'를 nano 편집기로 열려면 다음과 같이 입력
+
+> 예를 들어, 'testfile.txt'를 nano 편집기로 열려면 다음과 같이 입력
 
 ```
 [root@localhost ~]# nano testfile.txt
@@ -216,7 +227,8 @@ happy coding!!
 ### `sudo` (superuser do)
 - `관리자 권한`으로 명령어를 `실행` 
 - 일반 사용자로 로그인한 상태에서 관리자 권한이 필요한 작업을 수행하려면 `sudo`를 사용 
-- 예를 들어, vim패키지를 설치하려면 다음과 같이 입력
+
+> 예를 들어, vim패키지를 설치하려면 다음과 같이 입력
 
 ```
 [fedora@localhost ~]$ sudo dnf install vim
@@ -228,7 +240,8 @@ happy coding!!
 - rwx rwx rwx (user group other)
 - rwx를 8진수로 표현하면 (r:4, w:2, x:1)
 - 소유자와 그룹, 그외 사용자에게 모두 권한을 부여하는 경우 777을 입력하면 됨
-- 예를 들어, 'test1.txt'에 대한 모든 사용자의 읽기, 쓰기, 실행 권한을 부여하려면 다음과 같이 입력
+
+> 예를 들어, 'test1.txt'에 대한 모든 사용자의 읽기, 쓰기, 실행 권한을 부여하려면 다음과 같이 입력
 
 ```
 [fedora@localhost ~]$ ls -l test1.txt
@@ -312,7 +325,8 @@ root         10  0.0  0.0      0     0 ?        S    22:52   0:00 [migration/0]
 - 프로세스를 종료 
 - 프로세스 ID(PID)를 사용하여 특정 프로세스를 종료할 수 있음 
 - `-9` 옵션을 사용하면 강제종료 가능
-- 예를 들어, 프로세스 ID가 2054인 프로세스를 종료하려면 다음과 같이 입력
+
+> 예를 들어, 프로세스 ID가 2054인 프로세스를 종료하려면 다음과 같이 입력
 
 ```
 [fedora@localhost ~]$ kill 2054
@@ -335,7 +349,8 @@ systemd─┬─ModemManager───2*[{ModemManager}]
 
 ### `wget`
 - 웹에서 파일을 다운로드
-- 예를 들어, 파일의 URL이 'https://linux.com/test.zip'인 경우 다음과 같이 입력
+
+> 예를 들어, 파일의 URL이 'https://linux.com/test.zip'인 경우 다음과 같이 입력
 
 ```
 [fedora@localhost ~]$ wget https://linux.com/test.zip
@@ -343,7 +358,8 @@ systemd─┬─ModemManager───2*[{ModemManager}]
 
 ### `curl`
 - 웹에서 데이터를 송수신하거나 API를 호출하는 데 사용되는 명령어
-- 예를 들어, 웹 페이지의 HTML 소스를 출력하려면 다음과 같이 입력
+
+> 예를 들어, 웹 페이지의 HTML 소스를 출력하려면 다음과 같이 입력
 
 ```
 [fedora@localhost ~]$ curl google.com
