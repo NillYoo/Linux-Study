@@ -310,3 +310,33 @@ rm: remove 일반 빈 파일 'rename_text.txt'? y
 
 ## 프로세스 관리
 
+- 프로세스는 실행 중인 프로그램의 인스턴스
+- 시스템 자원을 사용하고 관리하며 서로 독립적으로 작동
+- 리눅스에서는 다양한 명령어를 사용하여 프로세스를 관리할 수 있음
+
+### `ps`
+- 프로세스 목록 확인
+- 옵션: 
+  - `-e`: 시스템의 모든 프로세스 나열
+  - `-f`: 프로세스에 대한 상세 정보 표시
+  - `-ef`: 시스템의 모든 프로세스와 상세정보를 표시
+
+```
+[root@localhost ~]# ps
+
+   PID TTY          TIME CMD
+  1765 pts/0    00:00:00 bash
+  1885 pts/0    00:00:00 ps
+```
+```
+[root@localhost ~]# ps -ef
+
+UID         PID   PPID  C STIME TTY          TIME CMD
+root          1      0  2 22:31 ?        00:00:01 /usr/lib/systemd/systemd --switched-root --system --deserializ
+root          2      0  0 22:31 ?        00:00:00 [kthreadd]
+root          3      2  0 22:31 ?        00:00:00 [kworker/0:0]
+root          4      2  0 22:31 ?        00:00:00 [kworker/0:0H]
+root          5      2  0 22:31 ?        00:00:00 [kworker/u256:0]
+root          6      2  0 22:31 ?        00:00:00 [mm_percpu_wq]
+...
+```
