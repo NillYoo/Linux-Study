@@ -340,3 +340,20 @@ root          5      2  0 22:31 ?        00:00:00 [kworker/u256:0]
 root          6      2  0 22:31 ?        00:00:00 [mm_percpu_wq]
 ...
 ```
+
+### `pstree`
+- 실행 중인 프로세스들의 트리 구조를 확인할 수 있음
+- 이를 통해 부모-자식 관계를 쉽게 파악
+
+```
+[fedora@localhost ~]$ pstree
+
+systemd─┬─ModemManager───2*[{ModemManager}]
+        ├─NetworkManager───2*[{NetworkManager}]
+        ├─VGAuthService
+        ├─abrt-dbus───2*[{abrt-dbus}]
+        ├─3*[abrt-dump-journ]
+        ├─abrtd───2*[{abrtd}]
+        ...
+```
+
