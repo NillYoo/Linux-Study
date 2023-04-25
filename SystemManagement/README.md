@@ -357,3 +357,169 @@ systemd─┬─ModemManager───2*[{ModemManager}]
         ...
 ```
 
+### `top`,`htop`
+- 실행 중인 프로세스의 상태를 실시간으로 확인하고 관리할 수 있는 도구
+- `top`을 실행하면 CPU, 메모리 사용률 등의 정보를 확인할 수 있으며, 키보드 명령으로 프로세스를 종료하거나 우선 순위를 변경할 수 있음
+
+```
+[root@localhost ~]# top
+```
+![top_display](../assets/top.png)
+
+- `htop`는 top과 비슷한 기능을 제공하지만, 사용자 인터페이스가 더 직관적임 
+- htop을 사용하려면 먼저 설치해야 함
+
+```
+[root@localhost ~]# dnf install htop //  Fedora, CentOS, RHEL 인 경우
+[root@localhost ~]# apt-get install htop //  Debian, Ubuntu 계열 인 경우
+.
+..
+...
+[root@localhost ~]# htop
+```
+![htop_display](../assets/htop.png)
+
+### `kill` 
+- 프로세스 ID(PID)를 사용하여 특정 프로세스를 종료할 수 있음 
+- `-9` 옵션을 사용하면 강제종료 가능
+
+> 예를 들어, 프로세스 ID가 2054인 프로세스를 종료하려면 다음과 같이 입력
+
+```
+[fedora@localhost ~]$ kill 2054
+```
+
+### `killall`
+- 프로세스 이름을 사용하여 프로세스를 종료
+- 해당 명령어를 사용하면 같은 이름의 모든 프로세스가 종료됨
+
+```
+[fedora@localhost ~]$ killall crypto
+```
+
+### `pkill`
+- 프로세스 이름을 사용하여 프로세스를 종료
+- 해당 명령어를 사용하면 같은 이름의 프로세스 중 첫 번째 프로세스가 종료됨
+
+```
+[fedora@localhost ~]$ pkill crypto
+```
+
+### `nice`
+
+- `nice` 명령어를 사용하여 프로세스의 우선 순위를 설정하고 프로세스를 실행할 수 있음
+- 낮은 값은 높은 우선 순위를 의미하며, 높은 값은 낮은 우선 순위를 의미함 
+- 기본값은 0
+
+> 예를 들어 crypto라는 프로세스의 우선순위를 10으로 설정하고 실행하려면 아래와 같이 입력
+```
+[fedora@localhost ~]$ nice -n 10 crypto
+```
+
+### `renice`
+- 현재 실행중인 프로세스의 우선순위를 변경
+- 현재 실행중인 프로세스의 우선순위값은 `top`의 `NI`열의 숫자로 확인 가능 
+- 옵션: 
+  - `-n`: 프로세스의 우선순위 값을 지정(값은 -20 ~ 19 사이의 정수)
+  - `-p`: PID를 지정하여 프로세스 우선순위를 변경
+  - `-g`: 프로세스 그룹의 우선순위를 변경
+  - `-u`: 사용자의 모든 프로세스의 우선순위를 변경
+
+> 예를 들어 PID가 2023인 프로세스의 우선 순위를 변경하려면 아래와 같이 입력
+```
+[fedora@localhost ~]$ nice -n 11 -p 2023
+```
+
+## 네트워크 설정 및 관리
+
+### `ifconfig`
+- 네트워크 인터페이스 확인
+- 현재 사용중인 네트워크 정보를 확인 할 수 있음
+- `ifconfig` 또는 `ip addr show`를 사용
+
+```
+[root@localhost ~]# ifconfig
+
+ens160: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.111.100  netmask 255.255.255.0  broadcast 192.168.111.255
+        inet6 fe80::20b2:5210:91c7:61b7  prefixlen 64  scopeid 0x20<link>
+        ether 00:0c:29:64:11:d7  txqueuelen 1000  (Ethernet)
+        RX packets 45785  bytes 68373546 (65.2 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 6360  bytes 362053 (353.5 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 7  bytes 745 (745.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 7  bytes 745 (745.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
+
+### `nmcli`
+- 현재 사용중인 네트워크설정을 변경하는 도구
+- `device show`: 현재 사용중인 네트워크 장치에 대한 정보를 표시
+```
+[root@localhost ~]# nmcli device show
+GENERAL.DEVICE:                         ens160
+GENERAL.TYPE:                           ethernet
+GENERAL.HWADDR:                         00:0C:29:64:11:D7
+GENERAL.MTU:                            1500
+GENERAL.STATE:                          100 (연결됨)
+GENERAL.CONNECTION:                     ens160
+GENERAL.CON-PATH:                       /org/freedesktop/NetworkManager/ActiveConnection/1
+WIRED-PROPERTIES.CARRIER:               켜짐
+IP4.ADDRESS[1]:                         192.168.111.100/24
+IP4.GATEWAY:                            192.168.111.2
+IP4.ROUTE[1]:                           dst = 192.168.111.0/24, nh = 0.0.0.0, mt = 100
+IP4.ROUTE[2]:                           dst = 0.0.0.0/0, nh = 192.168.111.2, mt = 100
+IP4.DNS[1]:                             192.168.111.2
+IP6.ADDRESS[1]:                         fe80::20b2:5210:91c7:61b7/64
+IP6.GATEWAY:                            --
+IP6.ROUTE[1]:                           dst = ff00::/8, nh = ::, mt = 256, table=255
+IP6.ROUTE[2]:                           dst = fe80::/64, nh = ::, mt = 256
+IP6.ROUTE[3]:                           dst = fe80::/64, nh = ::, mt = 100
+
+GENERAL.DEVICE:                         lo
+GENERAL.TYPE:                           loopback
+GENERAL.HWADDR:                         00:00:00:00:00:00
+GENERAL.MTU:                            65536
+GENERAL.STATE:                          10 (관리되지 않음)
+GENERAL.CONNECTION:                     --
+GENERAL.CON-PATH:                       --
+IP4.ADDRESS[1]:                         127.0.0.1/8
+IP4.GATEWAY:                            --
+IP6.ADDRESS[1]:                         ::1/128
+IP6.GATEWAY:                            --
+```
+- `nmcli connection modify ... `: 현재 사용중인 네트워크 장치의 설정 변경
+```
+[root@localhost ~]# nmcli connection modify 장치이름 ipv4.method manual ipv4.addresses "192.168.1.100/24" ipv4.gateway 192.168.1.1 ipv4.dns "8.8.8.8"
+[root@localhost ~]# nmcli connection up 장치이름 // 위의 변경을 완료 후 해당 명령어를 통해 연결을 상태를 업데이트 해줘야함
+```
+
+### `네트워크 설정파일 수정`
+- `nmcli`을 사용하지 않고 `네트워크 설정파일`을 수정하여 네트워크 설정을 변경 할 수 있음
+- Debian, Ubuntu, Mint 등 Debian 계열
+  - `/etc/network/interfaces`: 네트워크 인터페이스와 IP 주소, 게이트웨이, DNS 서버 등의 정보를 설정
+  - `/etc/network/interfaces.d/`: 네트워크 인터페이스 설정을 따로 파일로 분리해서 관리할 수 있음
+- RHEL, CentOS, Fedora 등 Red Hat 계열
+  - `/etc/sysconfig/network-scripts/ifcfg-eth0`: 네트워크 인터페이스 설정 파일, 이더넷 인터페이스의 이름에 따라 파일 이름이 달라짐
+  - `/etc/resolv.conf`: DNS 서버 주소를 설정
+  - `/etc/hosts`: 호스트 이름과 IP 주소를 매핑
+
+```
+[root@localhost ~]# nano /etc/sysconfig/network-scripts/ifcfg-ens160
+```
+![ens160](../assets/ens160.png)
+
+- 네트워크 설정파일을 수정하고 저장하였다면 네트워크를 재시작 해줘야 변경사항이 적용 됨
+
+```
+[root@localhost ~]# systemctl restart networking      //Debian, Ubuntu, Mint 등 Debian 계열
+[root@localhost ~]# systemctl restart Network         //RHEL, CentOS 등 Red Hat 계열
+[root@localhost ~]# systemctl restart NetworkManager  //Fedora
+```
