@@ -27,3 +27,31 @@
 - 웹 서버 구성
 - 데이터베이스 설치 및 구성
 - DNS 서버 구성
+
+
+## To Do List
+
+### Understanding Basic Linux Concepts [[Link]](/Basic/README_EN.md)
+
+- History and background of Linux
+- Understanding shell and terminal usage
+- Frequently used commands
+
+### Linux System Administration [[Link]](/SystemManagement/README_EN.md)
+
+- User management
+- File system management
+- Process management
+- Network configuration and management
+
+### Linux Security
+
+- Firewall setup
+- Permission settings and management
+- Understanding and using SELinux
+
+### Linux Server Management
+
+- Web server configuration
+- Database installation and configuration
+- DNS server configuration

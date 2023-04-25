@@ -386,7 +386,7 @@ testzip2
 mytest.tar.xz  test  testzip  testzip2 
 
 ```
-- 파일압출(xz) 풀기
+- 파일압축(xz) 풀기
 ```
 [fedora@localhost ~]$ ls
 mytest.tar.xz  test  testzip
