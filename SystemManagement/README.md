@@ -523,3 +523,60 @@ IP6.GATEWAY:                            --
 [root@localhost ~]# systemctl restart Network         //RHEL, CentOS 등 Red Hat 계열
 [root@localhost ~]# systemctl restart NetworkManager  //Fedora
 ```
+
+### `ping`
+- 네트워크 연결 확인
+
+```
+[root@localhost ~]# ping www.google.com
+
+PING www.google.com (216.58.203.68) 56(84) bytes of data.
+64 bytes from kul09s03-in-f4.1e100.net (216.58.203.68): icmp_seq=1 ttl=128 time=75.1 ms
+64 bytes from kul09s03-in-f4.1e100.net (216.58.203.68): icmp_seq=2 ttl=128 time=82.1 ms
+64 bytes from kul09s03-in-f4.1e100.net (216.58.203.68): icmp_seq=3 ttl=128 time=65.1 ms
+.
+..
+...
+--- www.google.com ping statistics ---
+7 packets transmitted, 7 received, 0% packet loss, time 6010ms
+rtt min/avg/max/mdev = 65.177/76.996/83.777/5.712 ms
+```
+
+### `netstat` or `ss`
+- 시스템에서 사용 중인 포트와의 연결 상태 확인
+- 네트워크 연결, 라우팅 테이블, 인터페이스 상태 등을 확인하는 명령어
+- 옵션: 
+  - `-tuln`:  TCP 연결(-t), UDP 연결(-u), Listening 상태의 소켓(-l), 숫자 형태로 표시(-n)하는 옵션, 이 옵션을 사용하면 현재 시스템에서 사용 중인 TCP 및 UDP 포트 및 해당 프로세스 ID를 확인할 수 있음
+```
+[root@localhost ~]# netstat -tuln
+
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN     
+tcp6       0      0 ::1:631                 :::*                    LISTEN     
+udp    46976      0 0.0.0.0:5353            0.0.0.0:*                          
+udp        0      0 0.0.0.0:45364           0.0.0.0:*                          
+udp        0      0 127.0.0.1:323           0.0.0.0:*                          
+udp6   35072      0 :::5353                 :::*                               
+udp6       0      0 ::1:323                 :::*                               
+udp6       0      0 :::51606                :::*  
+```
+
+### `nc` (netcat)
+- TCP/IP 소켓에 데이터를 전송하거나 수신할 수 있는 유틸리티
+- 네트워크 디버깅, 서비스 테스트, 데이터 전송 등에 사용
+
+```
+nc [옵션] 호스트명 포트번호 // nc명령어가 사용 되는 포맷
+```
+
+- 옵션: 
+  - `-l` 옵션: nc를 서버로 동작시킴
+  - `-p` 옵션: 사용할 포트 번호를 지정
+  - `-v` 옵션: 디버그 메시지를 출력
+
+- 사용: 
+  - `TCP/IP 서비스 테스트`: nc 명령어를 사용하여 원격 호스트의 특정 포트에 접속하여 서비스가 제대로 동작하는지 확인할 수 있음
+  - `파일 전송`: nc 명령어를 사용하여 파일을 전송할 수 있음
+  - `채팅`: 포트를 열어 서버와 클라이언트간 채팅 가능
+
