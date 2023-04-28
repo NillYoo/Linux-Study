@@ -16,7 +16,7 @@
 - 프로세스 관리
 - 네트워크 설정 및 관리
 
-### 리눅스 보안 [[Link]]
+### 리눅스 보안 [[Link]](/SecuritySetting/)
 
 - 방화벽 설정
 - 권한 설정 및 관리
@@ -44,7 +44,7 @@
 - Process management
 - Network configuration and management
 
-### Linux Security
+### Linux Security [[Link]](/SecuritySetting/README_EN.md)
 
 - Firewall setup
 - Permission settings and management
